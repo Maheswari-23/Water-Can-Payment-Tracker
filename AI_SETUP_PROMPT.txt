@@ -1,0 +1,97 @@
+═══════════════════════════════════════════════════════════════════
+🤖 COPY THIS PROMPT AND PASTE IN GOOGLE SHEETS AI
+═══════════════════════════════════════════════════════════════════
+
+Create a Water Can Payment Tracking System with the following specifications:
+
+STEP 1 - CREATE COLUMN HEADERS IN ROW 1:
+A1: Customer Name
+B1: Phone Number
+C1: Address
+D1: Number of Cans
+E1: Price Per Can
+F1: Total Amount
+G1: Paid Status
+H1: Payment Date
+I1: Last Reminder Date
+J1: WhatsApp Link
+
+Format Row 1: Bold text, Blue background (#4285f4), White text color
+
+STEP 2 - ADD FORMULAS:
+
+In cell F2 (Total Amount formula):
+=IF(AND(D2<>"", E2<>""), D2*E2, "")
+
+In cell J2 (WhatsApp Link formula):
+=IF(AND(A2<>"", B2<>"", G2="No"), "https://wa.me/91"&SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(B2," ",""),"-",""),"(","")&"?text="&ENCODEURL("Dear "&A2&", your pending water can payment is ₹"&F2&". Kindly make payment. Thank you."), "")
+
+Copy both formulas from row 2 down to row 100.
+
+STEP 3 - ADD DATA VALIDATION:
+Apply data validation to column G (G2:G100):
+- Type: Dropdown list
+- Options: Yes,No
+- Show dropdown in cell: Yes
+- Reject invalid input: Yes
+
+STEP 4 - ADD CONDITIONAL FORMATTING:
+Rule 1 - Red for Unpaid:
+- Apply to range: A2:J100
+- Format rule: Custom formula = $G2="No"
+- Background color: #ffcdd2 (light red)
+
+Rule 2 - Green for Paid:
+- Apply to range: A2:J100
+- Format rule: Custom formula = $G2="Yes"
+- Background color: #c8e6c9 (light green)
+
+STEP 5 - FORMAT COLUMNS:
+- Column A (Customer Name): Width 150px
+- Column B (Phone Number): Width 120px, Format as Plain text
+- Column C (Address): Width 200px
+- Column D (Number of Cans): Width 100px, Format as Number
+- Column E (Price Per Can): Width 100px, Format as Currency (₹)
+- Column F (Total Amount): Width 120px, Format as Currency (₹)
+- Column G (Paid Status): Width 100px
+- Column H (Payment Date): Width 120px, Format as Date
+- Column I (Last Reminder Date): Width 150px, Format as Date
+- Column J (WhatsApp Link): Width 400px
+
+STEP 6 - ADD SAMPLE DATA (for testing):
+Add these 3 sample customers in rows 2-4:
+
+Row 2:
+A2: Ramesh Kumar
+B2: 9876543210
+C2: Shop No. 5, MG Road, Mumbai
+D2: 5
+E2: 20
+G2: No
+
+Row 3:
+A3: Priya Sharma
+B3: 9123456789
+C3: House 12, Sector 15, Delhi
+D3: 3
+E3: 25
+G3: Yes
+H3: 2026-05-20
+
+Row 4:
+A4: Amit Patel
+B4: 9988776655
+C4: Flat 201, Sunrise Apartments, Ahmedabad
+D4: 10
+E4: 18
+G4: No
+
+STEP 7 - FREEZE HEADER ROW:
+Freeze row 1 so headers stay visible when scrolling.
+
+STEP 8 - RENAME SHEET:
+Rename "Sheet1" to "Customer Data"
+
+Execute all these steps and confirm when complete.
+
+═══════════════════════════════════════════════════════════════════
